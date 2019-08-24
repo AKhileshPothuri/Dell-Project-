@@ -11,9 +11,6 @@ import { ProductModule } from './layouts/product/product.module';
 import { UserModule } from './layouts/user/user.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-
 
 /* to load and set en.json as the default application language */
 export function setupTranslateFactory(service: TranslateService): Function {
@@ -25,8 +22,6 @@ export function setupTranslateFactory(service: TranslateService): Function {
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
-		AngularFireModule.initializeApp(environment.firebase, 'Angular-ShoppingCart-master'),
-        AngularFireDatabaseModule,
 		IndexModule,
 		ProductModule,
 		UserModule,

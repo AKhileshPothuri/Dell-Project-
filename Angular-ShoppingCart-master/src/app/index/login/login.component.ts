@@ -75,7 +75,9 @@ export class LoginComponent implements OnInit {
 				setTimeout((router: Router) => {
 					this.router.navigate([returnUrl || "/"]);
 				}, 1500);
-
+				if(returnUrl=='/checkouts')
+					this.router.navigate(["/checkouts"]);
+				else
 				this.router.navigate(["/"]);
 			})
 			.catch((err) => {
@@ -91,7 +93,9 @@ export class LoginComponent implements OnInit {
 					this.userService.createUser(res.additionalUserInfo.profile);
 				}
 				const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
-				location.reload();
+				if(returnUrl=='/checkouts')
+				this.router.navigate(["/checkouts"]);
+				else
 				this.router.navigate(["/"]);
 			})
 			.catch((err) => {
