@@ -11,7 +11,7 @@ import { ToastrService } from 'src/app/shared/services/toastr.service';
 export class ProductListComponent implements OnInit {
 	productList: Product[];
 	loading = false;
-	brands = ['All', 'Google', 'Apple', 'Realme', 'Nokia', 'Motorolla'];
+	brands = ['All', 'Laptop', 'Desktop', 'Keyboards/Mouse', 'Hard Drives', 'Speaker/Headphones'];
 
 	selectedBrand: 'All';
 

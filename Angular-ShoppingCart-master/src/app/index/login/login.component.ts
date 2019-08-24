@@ -1,7 +1,7 @@
 import { ToastrService } from "./../../shared/services/toastr.service";
 import { NgForm, EmailValidator } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { UserService } from "../../shared/services/user.service";
 import { AuthService } from "../../shared/services/auth.service";
 import { User } from "../../shared/models/user";
@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 	errorInUserCreate = false;
 	errorMessage: any;
 	createUser;
+	previousUrl: string;
 
 	constructor(
 		private authService: AuthService,
@@ -30,6 +31,10 @@ export class LoginComponent implements OnInit {
 		private route: ActivatedRoute
 	) {
 		this.createUser = new User();
+		// router.events.filter(event => event instanceof NavigationEnd).subscribe(e => {
+		// 	console.log('prev:', this.previousUrl);
+		// 	this.previousUrl = e.url;
+		// });
 	}
 
 	ngOnInit() { }
@@ -76,6 +81,10 @@ export class LoginComponent implements OnInit {
 					this.router.navigate([returnUrl || "/"]);
 				}, 1500);
 
+				if (returnUrl == '/checkouts'){
+					this.router.navigate([returnUrl]);
+				}
+
 				this.router.navigate(["/"]);
 			})
 			.catch((err) => {
@@ -91,11 +100,15 @@ export class LoginComponent implements OnInit {
 					this.userService.createUser(res.additionalUserInfo.profile);
 				}
 				const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
-				location.reload();
+				if (returnUrl == '/checkouts'){
+					this.router.navigate([returnUrl]);
+				}
+				//location.reload();
 				this.router.navigate(["/"]);
 			})
 			.catch((err) => {
 				this.toastService.error("Error Occured", "Please try again later");
 			});
 	}
+	
 }
