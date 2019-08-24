@@ -18,7 +18,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
 }
 
 @NgModule({
-	declarations: [ AppComponent ],
+	declarations: [ AppComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
