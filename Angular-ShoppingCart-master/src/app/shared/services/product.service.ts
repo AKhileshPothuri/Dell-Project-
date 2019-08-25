@@ -64,8 +64,14 @@ export class ProductService {
 	// Adding New product to favourite if logged else to localStorage
 	addFavouriteProduct(data: Product): void {
 		let a: Product[];
+		const Favo=this.getUsersFavouriteProduct();
+		const user = this.authService.getLoggedInUser();
+		let fp = new FavouriteProduct();
+		fp.productId = data.$key;
+		fp.userId = user.$key;
+		Favo.push(fp);
 		a = JSON.parse(localStorage.getItem('avf_item')) || [];
-		a.push(data);
+		//a.push(data);
 		this.toastrService.wait('Adding Product', 'Adding Product as Favourite');
 		setTimeout(() => {
 			localStorage.setItem('avf_item', JSON.stringify(a));
@@ -154,7 +160,7 @@ export class ProductService {
 }
 
 export class FavouriteProduct {
-	product: Product;
+	//product: Product;
 	productId: string;
 	userId: string;
 }
