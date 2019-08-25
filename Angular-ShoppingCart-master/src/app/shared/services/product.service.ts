@@ -24,6 +24,7 @@ export class ProductService {
 	) {
 		this.calculateLocalFavProdCounts();
 		this.calculateLocalCartProdCounts();
+		//this.getUsersFavouriteProduct();
 	}
 
 	getProducts() {
@@ -63,9 +64,21 @@ export class ProductService {
 
 	// Adding New product to favourite if logged else to localStorage
 	addFavouriteProduct(data: Product): void {
+		const favouriteProductList = this.getUsersFavouriteProduct();
+		const user = this.authService.getLoggedInUser();
+		let fp = new FavouriteProduct();
+		//fp.product = data;
+		fp.productId = data.$key;
+		fp.userId = user.$key;
+		//console.log(fp.productId);
+		//console.log(fp.userId);
+		//console.log(fp.product);
+		//console.log("Came until here");
+		favouriteProductList.push((fp));
+		//console.log("Executing database save");
 		let a: Product[];
 		a = JSON.parse(localStorage.getItem('avf_item')) || [];
-		a.push(data);
+		// a.push(data);
 		this.toastrService.wait('Adding Product', 'Adding Product as Favourite');
 		setTimeout(() => {
 			localStorage.setItem('avf_item', JSON.stringify(a));
@@ -105,6 +118,10 @@ export class ProductService {
 	calculateLocalFavProdCounts() {
 		this.navbarFavProdCount = this.getLocalFavouriteProducts().length;
 	}
+
+	// calculateFavouritesProducts(){
+	// 	//this.favouriteProducts = this.getLocalFavouriteProducts();
+	// }
 
 	/*
    ----------  Cart Product Function  ----------
@@ -154,7 +171,7 @@ export class ProductService {
 }
 
 export class FavouriteProduct {
-	product: Product;
+	//product: Product;
 	productId: string;
 	userId: string;
 }
