@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "angular-shoppingcart"
+    "default": "angular-shoppingcart",
+    "hosting": "ecomm-trial-p1"
   }
 }
