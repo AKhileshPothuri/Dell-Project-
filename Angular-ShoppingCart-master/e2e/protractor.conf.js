@@ -10,7 +10,7 @@ exports.config = {
     browserName: "chrome"
   },
   directConnect: true,
-  baseUrl: "http://ecomm-trial-p1.firebaseapp.com/",
+  baseUrl: "https://ecomm-trial-p1.firebaseapp.com",
   framework: "jasmine",
   jasmineNodeOpts: {
     showColors: true,
