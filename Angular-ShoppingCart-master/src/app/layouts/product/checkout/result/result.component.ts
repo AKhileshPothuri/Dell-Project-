@@ -1,9 +1,14 @@
 import { Product } from '../../../../shared/models/product';
 import { ProductService } from '../../../../shared/services/product.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AuthService } from '../../../../shared/services/auth.service';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Router } from '@angular/router';
+
 declare var $: any;
+declare var toastr: any;
+
 @Component({
 	selector: 'app-result',
 	templateUrl: './result.component.html',
@@ -15,7 +20,11 @@ export class ResultComponent implements OnInit {
 	totalPrice = 0;
 	tax = 6.4;
 
-	constructor(private productService: ProductService) {
+	constructor(
+		authService: AuthService,
+		private productService: ProductService,
+		private router: Router
+		) {
 		/* Hiding Billing Tab Element */
 		document.getElementById('productsTab').style.display = 'none';
 		document.getElementById('shippingTab').style.display = 'none';
@@ -33,6 +42,12 @@ export class ResultComponent implements OnInit {
 
 	ngOnInit() { }
 
+	finishPayment(){
+		//const data = document.getElementById('receipt');
+		this.router.navigate(["/"]);
+		toastr.success('Payment Successful', 'Your Payment has been Successful. Please write back for any queries.');
+	}
+
 	downloadReceipt() {
 		const data = document.getElementById('receipt');
 		// console.log(data);
@@ -48,7 +63,7 @@ export class ResultComponent implements OnInit {
 			const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
 			const position = 0;
 			pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-			pdf.save('ikismail.pdf'); // Generated PDF
+			pdf.save('receipt.pdf'); // Generated PDF
 		});
 	}
 }
