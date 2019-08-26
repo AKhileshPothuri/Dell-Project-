@@ -48,8 +48,12 @@
               <td>{{product.ratings}}</td>
             </tr>
             <tr>
+              <th scope="row">Reviews</th>
+              <td>{{product.reviews}}</td>
+            </tr>
+            <tr>
               <th scope="row">Product Added on</th>
-              <td>{{product.productAdded * 1000 | date}}</td>
+              <td>{{product.productAdded  | date}}</td>
             </tr>
           </tbody>
         </table>
