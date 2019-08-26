@@ -71,7 +71,7 @@ export class ProductService {
 		fp.userId = user.$key;
 		Favo.push(fp);
 		a = JSON.parse(localStorage.getItem('avf_item')) || [];
-		//a.push(data);
+		a.push(data);
 		this.toastrService.wait('Adding Product', 'Adding Product as Favourite');
 		setTimeout(() => {
 			localStorage.setItem('avf_item', JSON.stringify(a));
