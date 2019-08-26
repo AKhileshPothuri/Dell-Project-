@@ -59,4 +59,8 @@ export class BillingDetailsComponent implements OnInit {
 
 		this.router.navigate([ 'checkouts', { outlets: { checkOutlet: [ 'result' ] } } ]);
 	}
+
+	validateForm(){
+		
+	}
 }
