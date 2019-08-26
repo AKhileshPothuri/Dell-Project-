@@ -22,10 +22,16 @@ export class CartProductsComponent implements OnInit {
 
 	removeCartProduct(product: Product) {
 		this.productService.removeLocalCartProduct(product);
-
 		// Recalling
 		this.getCartProduct();
 	}
+
+	emptyCartProduct(){
+		// Not used
+		this.productService.emptyLocalCart();
+		this.getCartProduct();
+	}
+
 
 	getCartProduct() {
 		this.cartProducts = this.productService.getLocalCartProducts();

@@ -64,14 +64,14 @@ export class ProductService {
 	// Adding New product to favourite if logged else to localStorage
 	addFavouriteProduct(data: Product): void {
 		let a: Product[];
-		const Favo=this.getUsersFavouriteProduct();
-		const user = this.authService.getLoggedInUser();
-		let fp = new FavouriteProduct();
-		fp.productId = data.$key;
-		fp.userId = user.$key;
-		Favo.push(fp);
+		//const Favo=this.getUsersFavouriteProduct();
+		//const user = this.authService.getLoggedInUser();
+		//let fp = new FavouriteProduct();
+		//fp.productId = data.$key;
+		//fp.userId = user.$key;
+		//Favo.push(fp);
 		a = JSON.parse(localStorage.getItem('avf_item')) || [];
-		//a.push(data);
+		a.push(data);
 		this.toastrService.wait('Adding Product', 'Adding Product as Favourite');
 		setTimeout(() => {
 			localStorage.setItem('avf_item', JSON.stringify(a));
@@ -94,7 +94,6 @@ export class ProductService {
 	// Removing Favourite Product from localStorage
 	removeLocalFavourite(product: Product) {
 		const products: Product[] = JSON.parse(localStorage.getItem('avf_item'));
-
 		for (let i = 0; i < products.length; i++) {
 			if (products[i].productId === product.productId) {
 				products.splice(i, 1);
@@ -111,6 +110,14 @@ export class ProductService {
 	calculateLocalFavProdCounts() {
 		this.navbarFavProdCount = this.getLocalFavouriteProducts().length;
 	}
+
+	emptylocalFavs(){
+		const products: Product[] = JSON.parse(localStorage.getItem('avf_item'));
+		products.splice(0, products.length);
+		localStorage.setItem('avf_item', JSON.stringify(products));
+		this.calculateLocalFavProdCounts();
+	}
+
 
 	/*
    ----------  Cart Product Function  ----------
@@ -142,14 +149,19 @@ export class ProductService {
 		}
 		// ReAdding the products after remove
 		localStorage.setItem('avct_item', JSON.stringify(products));
+		this.calculateLocalCartProdCounts();
+	}
 
+	emptyLocalCart(){
+		const products: Product[] = JSON.parse(localStorage.getItem('avct_item'));
+		products.splice(0, products.length);
+		localStorage.setItem('avct_item', JSON.stringify(products));
 		this.calculateLocalCartProdCounts();
 	}
 
 	// Fetching Locat CartsProducts
 	getLocalCartProducts(): Product[] {
 		const products: Product[] = JSON.parse(localStorage.getItem('avct_item')) || [];
-
 		return products;
 	}
 

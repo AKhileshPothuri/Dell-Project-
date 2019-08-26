@@ -31,6 +31,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() { }
   logout() {
     this.authService.logout();
+    this.productService.emptyLocalCart();
+    this.productService.emptylocalFavs();
     this.router.navigate(["/"]);
   }
 

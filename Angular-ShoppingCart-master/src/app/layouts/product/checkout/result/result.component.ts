@@ -2,9 +2,11 @@ import { Product } from '../../../../shared/models/product';
 import { ProductService } from '../../../../shared/services/product.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../../../shared/services/auth.service';
+//import { CartProductsComponent } from '../../cart-products/cart-products.component';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Router } from '@angular/router';
+
 
 declare var $: any;
 declare var toastr: any;
@@ -23,7 +25,8 @@ export class ResultComponent implements OnInit {
 	constructor(
 		authService: AuthService,
 		private productService: ProductService,
-		private router: Router
+		private router: Router,
+		//private cartProductService: CartProductsComponent
 		) {
 		/* Hiding Billing Tab Element */
 		document.getElementById('productsTab').style.display = 'none';
@@ -43,8 +46,9 @@ export class ResultComponent implements OnInit {
 	ngOnInit() { }
 
 	finishPayment(){
-		//const data = document.getElementById('receipt');
 		this.router.navigate(["/"]);
+		this.productService.emptyLocalCart();
+		//this.cartProductService.emptyCartProduct();
 		toastr.success('Payment Successful', 'Your Payment has been Successful. Please write back for any queries.');
 	}
 
