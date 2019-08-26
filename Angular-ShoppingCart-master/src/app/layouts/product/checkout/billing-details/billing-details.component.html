@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="col-md order-md-1">
     <h4 class="mb-3">Billing Address</h4>
-    <form class="needs-validation" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
+    <form class="needs-validation" #userDetailsForm="ngForm" autocomplete="on" (ngSubmit)="updateUserDetails(userDetailsForm)" (ngChange)="validateForm()">
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="firstName">First name</label>
@@ -51,7 +51,7 @@
       <div class="row">
         <div class="col-md-5 mb-3">
           <label for="country">Country</label>
-          <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.country" name="country">
+          <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.country" name="country" required>
             <option value="">Choose...</option>
             <option>India</option>
           </select>
