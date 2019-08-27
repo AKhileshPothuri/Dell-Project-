@@ -44,7 +44,7 @@
             </a>
             <h5 class="card-title">
               <strong>
-                <a [routerLink]="['/products/product', product.$key]">{{ product.productName }}</a>
+                <a (click)='increaseCount()' [routerLink]="['/products/product', product.$key]">{{ product.productName }}</a>
               </strong>
             </h5>
 

@@ -11,6 +11,8 @@ import { ProductModule } from './layouts/product/product.module';
 import { UserModule } from './layouts/user/user.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { counterComponent } from "./index/navbar/counter";
+import { NavbarModule } from 'angular-bootstrap-md';
 
 /* to load and set en.json as the default application language */
 export function setupTranslateFactory(service: TranslateService): Function {
@@ -27,7 +29,8 @@ export function setupTranslateFactory(service: TranslateService): Function {
 		UserModule,
 		SharedModule,
 		RouterModule.forRoot(AppRoutes),
-		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+		//counterComponent
 	],
 	providers: [
 		TranslateService,

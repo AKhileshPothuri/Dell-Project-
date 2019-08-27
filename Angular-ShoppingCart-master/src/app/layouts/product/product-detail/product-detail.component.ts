@@ -15,7 +15,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 	constructor(
 		private route: ActivatedRoute,
 		private productService: ProductService,
-		private toastrService: ToastrService
+		private toastrService: ToastrService,
 	) {
 		this.product = new Product();
 	}

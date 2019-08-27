@@ -77,7 +77,34 @@
     </button>
   </div>
   <div class="modal-body">
-    Here comes our prediction
+    <div>
+        Cart Abandonment Percent: 74%
+    </div>
+    <br>
+    <div>
+      Cart:
+      <br>
+      <div *ngFor="let product of cartProducts">
+        <div>
+            <label>{{ product.productName }}</label>
+        </div>
+      </div>
+      <!-- <ul>
+        <item>XPS 13</item><br>
+        <item>Inspiron 24 3480</item><br>
+      </ul> -->
+    </div>
+    <br>
+    <br>
+    <div>
+      <label>Here are some useful reviews:</label>
+      <div *ngFor="let product of cartProducts">
+        <div>
+          <label>{{ product.reviews }}</label>
+        </div>
+        <br>
+      </div>
+    </div>
   </div>
 </ng-template>
 

@@ -9,7 +9,7 @@ export class Product {
   productAdded: number;
   productQuatity: number;
   ratings: number;
-  reviews:string;
+  reviews: string;
   favourite: boolean;
   productSeller: string;
 }
