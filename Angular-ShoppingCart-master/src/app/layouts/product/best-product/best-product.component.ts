@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
-import * as myClickCounter from '../../../global';
+import { AppComponent } from 'src/app/app.component';
+//import * as myClickCounter from '../../../global';
+//import { counterComponent } from "src/app/index/navbar/counter";
 
 @Component({
 	selector: 'app-best-product',
@@ -17,7 +19,8 @@ export class BestProductComponent implements OnInit {
 	constructor(
 		private productService: ProductService,
 		private toasterService: ToastrService,
-		public translate: TranslateService
+		public translate: TranslateService,
+		private appcomp: AppComponent
 	) {}
 
 	ngOnInit() {
@@ -62,8 +65,8 @@ export class BestProductComponent implements OnInit {
 	}
 
 	increaseCount(){
-		
-		//myClickCounter.clickCounter;
+		this.appcomp.clickCounterIncrement();
+		//console.log("Selected Prod");
 	}
 
 }

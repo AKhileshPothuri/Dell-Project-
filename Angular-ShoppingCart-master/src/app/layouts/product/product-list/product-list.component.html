@@ -52,7 +52,7 @@
                     </a>
                     <p class="card-title">
                       <strong>
-                        <a [routerLink]="['/products/product', product.$key]" routerLinkActive="router-link-active">{{
+                        <a (click)="increaseCounterCount()" [routerLink]="['/products/product', product.$key]" routerLinkActive="router-link-active">{{
                           product.productName }}</a>
                       </strong>
                     </p>

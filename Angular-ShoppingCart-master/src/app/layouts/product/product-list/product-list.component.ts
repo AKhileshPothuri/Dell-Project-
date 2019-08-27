@@ -3,6 +3,7 @@ import { Product } from '../../../shared/models/product';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ProductService } from '../../../shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
+import { AppComponent } from 'src/app/app.component';
 @Component({
 	selector: 'app-product-list',
 	templateUrl: './product-list.component.html',
@@ -19,7 +20,8 @@ export class ProductListComponent implements OnInit {
 	constructor(
 		public authService: AuthService,
 		private productService: ProductService,
-		private toastrService: ToastrService
+		private toastrService: ToastrService,
+		private appcomp: AppComponent
 	) { }
 
 	ngOnInit() {
@@ -57,5 +59,9 @@ export class ProductListComponent implements OnInit {
 
 	addToCart(product: Product) {
 		this.productService.addToCart(product);
+	}
+
+	increaseCounterCount(){
+		this.appcomp.clickCounterIncrement();
 	}
 }

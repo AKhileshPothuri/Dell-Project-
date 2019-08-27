@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { UserService } from "./shared/services/user.service";
 import { fadeAnimation } from "./shared/animations/fadeIntRoute";
+//import { counterComponent } from "./index/navbar/counter";
 
 declare var $: any;
 
@@ -11,9 +12,15 @@ declare var $: any;
   animations: [fadeAnimation]
 })
 export class AppComponent implements OnInit {
+  
+  public counter: number;
   title = "app";
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    ) {
+      this.counter = 0;
+    }
 
   ngOnInit() {
     $(document).ready(function() {
@@ -40,6 +47,15 @@ export class AppComponent implements OnInit {
       position["coords"].latitude,
       position["coords"].longitude
     );
+  }
+
+  public clickCounterIncrement() : void {
+    this.counter++;
+    console.log(this.counter);
+  }
+
+  public getCounterValue(){
+    return this.counter;
   }
 
   
