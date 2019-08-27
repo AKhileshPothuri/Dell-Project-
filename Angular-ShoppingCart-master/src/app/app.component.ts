@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { UserService } from "./shared/services/user.service";
 import { fadeAnimation } from "./shared/animations/fadeIntRoute";
-//import { counterComponent } from "./index/navbar/counter";
+import { HttpClient } from '@angular/common/http';
 
 declare var $: any;
+
+//declare var connection;
 
 @Component({
   selector: "app-root",
@@ -15,11 +17,15 @@ export class AppComponent implements OnInit {
   
   public counter: number;
   title = "app";
+  serverData: JSON;
+  employeeData: JSON;
 
   constructor(
     private userService: UserService,
+    private httpClient: HttpClient
     ) {
       this.counter = 0;
+      //connection = this.httpClient.get('http://127.0.0.1:5002/');
     }
 
   ngOnInit() {
@@ -56,6 +62,20 @@ export class AppComponent implements OnInit {
 
   public getCounterValue(){
     return this.counter;
+  }
+
+  sayHi(){
+    this.httpClient.get('http://127.0.0.1:5002/').subscribe(data => {
+      this.serverData = data as JSON;
+      console.log(this.serverData);
+    })
+  }
+
+  getAllEmployees() {
+    this.httpClient.get('http://127.0.0.1:5002/employees').subscribe(data => {
+      this.employeeData = data as JSON;
+      console.log(this.employeeData);
+    })
   }
 
   
