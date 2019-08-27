@@ -4,7 +4,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { IndexRoutes } from './index.routing';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProductModule } from '../layouts/product/product.module';
 
 // Components
@@ -15,7 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-	imports: [ CommonModule, ProductModule, SharedModule, RouterModule.forChild(IndexRoutes) ],
+	imports: [ CommonModule, ProductModule, SharedModule, RouterModule.forChild(IndexRoutes), ModalModule.forRoot() ],
 	declarations: [ IndexComponent, NavbarComponent, LoginComponent, FooterComponent ],
 	schemas: [ NO_ERRORS_SCHEMA ],
 	exports: [ NavbarComponent, FooterComponent ],
