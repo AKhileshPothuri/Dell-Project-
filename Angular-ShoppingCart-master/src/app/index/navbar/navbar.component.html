@@ -55,7 +55,7 @@
       </li>
       <li class="nav-item">
         <div>
-          <a class="nav-link" href="javascript:;;" [routerLink]="['/products/cart-items']">
+          <a class="nav-link" href="javascript:;;" (click) = "sendTrigger(template)" [routerLink]="['/products/cart-items']">
             <i class="fa fa-shopping-cart">
               <span class="mt-2"> {{productService.navbarCartCount}}</span>
             </i>
@@ -131,7 +131,7 @@
           <i class="fa fa-sign-in mr-1"></i> {{this.translate.data["SIGNIN"] | translate}}</a>
       </li>
       <li class="nav-item" *ngIf="authService.isLoggedIn()">
-        <a class="nav-link" (click)="logout()">
+        <a class="nav-link" (click)="logout(template)">
           <i class="fa fa-sign-in mr-1"></i>{{this.translate.data["LOGOUT"] | translate}}</a>
       </li>
       <!-- <li class="nav-item">
@@ -140,6 +140,47 @@
     </ul>
   </div>
   <!-- Collapsible content -->
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Your Products are still in the cart</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+          Probability of Buying: {{ ratio }}%
+      </div>
+      <br>
+      <div>
+        Cart:
+        <br>
+        <div *ngFor="let product of cartProducts">
+          <div>
+              <label>{{ product.productName }}</label>
+          </div>
+        </div>
+        <!-- <ul>
+          <item>XPS 13</item><br>
+          <item>Inspiron 24 3480</item><br>
+        </ul> -->
+      </div>
+      <br>
+      <br>
+      <div>
+        <label>Here are some useful reviews:</label>
+        <div *ngFor="let product of cartProducts">
+          <div>
+            <label>{{ product.reviews }}</label>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
 
 </nav>
 <!--/.Navbar-->

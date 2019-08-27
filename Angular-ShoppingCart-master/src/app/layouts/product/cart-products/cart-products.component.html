@@ -1,5 +1,7 @@
 <br>
+
 <div class="container" *ngIf="cartProducts.length > 0">
+  <!-- <body onload="openModal(template)"></body> -->
   <div class="row">
     <!-- List of Products -->
     <div class="col-8">
@@ -70,6 +72,8 @@
     </div>
   </div>
 </div>
+
+
 <div class="container" *ngIf="cartProducts.length === 0">
   <app-no-products-found [title]="messageTitle" [description]="messageDescription"></app-no-products-found>
 </div>

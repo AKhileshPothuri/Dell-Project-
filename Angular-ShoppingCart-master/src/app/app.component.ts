@@ -2,10 +2,9 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { UserService } from "./shared/services/user.service";
 import { fadeAnimation } from "./shared/animations/fadeIntRoute";
 import { HttpClient } from '@angular/common/http';
+import { stringify } from "@angular/compiler/src/util";
 
 declare var $: any;
-
-//declare var connection;
 
 @Component({
   selector: "app-root",
@@ -16,6 +15,7 @@ declare var $: any;
 export class AppComponent implements OnInit {
   
   public counter: number;
+  private ratio;
   title = "app";
   serverData: JSON;
   employeeData: JSON;
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     private httpClient: HttpClient
     ) {
       this.counter = 0;
-      this.sayHi();
+      this.sendArguments(5,10);
       //connection = this.httpClient.get('http://127.0.0.1:5002/');
     }
 
@@ -65,18 +65,19 @@ export class AppComponent implements OnInit {
     return this.counter;
   }
 
-  sayHi(){
-    this.httpClient.get('http://10.6.10.100:5000/api?arg1=10&arg2=5').subscribe(data => {
-      //this.serverData = data as JSON;
-      console.log(data as JSON);
-    })
+  public setClickValueZero(){
+    this.counter = 0;
   }
 
-  getAllEmployees() {
-    this.httpClient.get('http://10.6.10.100:5000/employees').subscribe(data => {
-      this.employeeData = data as JSON;
-      console.log(this.employeeData);
+
+  sendArguments(clicks, uniqueProds){
+    var client_id = `http://172.20.10.2:5000/api?arg1=${clicks}&arg2=${uniqueProds}`;
+    var serverData;
+    this.httpClient.get(client_id).subscribe(data => {
+      serverData = data as JSON;
+      this.ratio = serverData.r * 100;
     })
+    return this.ratio;
   }
   
 }
