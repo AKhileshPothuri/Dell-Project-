@@ -37,6 +37,14 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <div>
+          <a class="nav-link" href="javascript:;;" [routerLink]="['/products/chatbot']">
+            <i class="fa fa-heart"></i>
+          </a>
+        </div>
+
+      </li>
+      <li class="nav-item">
+        <div>
           <a class="nav-link" href="javascript:;;" [routerLink]="['/products/favourite-products']">
             <i class="fa fa-heart">
               <span class="mt-2"> {{productService.navbarFavProdCount}}</span>

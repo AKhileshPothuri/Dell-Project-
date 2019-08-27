@@ -4,6 +4,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { Routes } from '@angular/router';
 import { IndexComponent } from '../../index/index.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ChatBotComponent } from './chatbot/chatbot.module';
 
 export const ProductRoutes: Routes = [
 	{
@@ -20,6 +21,10 @@ export const ProductRoutes: Routes = [
 			{
 				path: 'favourite-products',
 				component: FavouriteProductsComponent
+			},
+			{
+				path: 'chatbot',
+				component: ChatBotComponent
 			},
 			{
 				path: 'cart-items',

@@ -25,3 +25,14 @@ export class UserDetail {
   state: string;
   zip: number;
 }
+
+export class UserQuery {
+  $key: string;
+  firstName: string;
+  lastName: string;
+  userName: string;
+  emailId: string;
+  mobile: string;
+  subject: string;
+  description: string;
+}
