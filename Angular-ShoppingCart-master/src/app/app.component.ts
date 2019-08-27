@@ -41,4 +41,6 @@ export class AppComponent implements OnInit {
       position["coords"].longitude
     );
   }
+
+  
 }

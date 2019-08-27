@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: "app-index",
@@ -7,7 +8,11 @@ import { Component, OnInit } from "@angular/core";
 })
 export class IndexComponent implements OnInit {
   options: any;
-  constructor() {}
+  modalRef: BsModalRef;
+  config = {
+    keyboard: true
+  };
+  constructor(private modalService: BsModalService) {}
 
   ngOnInit() {
     this.options = {
@@ -18,4 +23,9 @@ export class IndexComponent implements OnInit {
 			lazyLoad: true
 		};
   }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, this.config);
+  }
+
 }
