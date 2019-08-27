@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     private httpClient: HttpClient
     ) {
       this.counter = 0;
+      this.sayHi();
       //connection = this.httpClient.get('http://127.0.0.1:5002/');
     }
 
@@ -65,18 +66,17 @@ export class AppComponent implements OnInit {
   }
 
   sayHi(){
-    this.httpClient.get('http://127.0.0.1:5002/').subscribe(data => {
-      this.serverData = data as JSON;
-      console.log(this.serverData);
+    this.httpClient.get('http://10.6.10.100:5000/api?arg1=10&arg2=5').subscribe(data => {
+      //this.serverData = data as JSON;
+      console.log(data as JSON);
     })
   }
 
   getAllEmployees() {
-    this.httpClient.get('http://127.0.0.1:5002/employees').subscribe(data => {
+    this.httpClient.get('http://10.6.10.100:5000/employees').subscribe(data => {
       this.employeeData = data as JSON;
       console.log(this.employeeData);
     })
   }
-
   
 }
