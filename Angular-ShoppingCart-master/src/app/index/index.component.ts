@@ -1,5 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Product } from '../shared/models/product';
+import { ProductService } from '../shared/services/product.service';
 
 @Component({
   selector: "app-index",
@@ -7,12 +9,20 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ["./index.component.scss"]
 })
 export class IndexComponent implements OnInit {
+  
+  cartProducts: Product[];
+  //showDataNotFound = true;
+  
   options: any;
   modalRef: BsModalRef;
+
   config = {
     keyboard: true
   };
-  constructor(private modalService: BsModalService) {}
+  constructor(
+    private modalService: BsModalService,
+    private productService: ProductService
+    ) {}
 
   ngOnInit() {
     this.options = {
@@ -21,11 +31,16 @@ export class IndexComponent implements OnInit {
 			loop: true,
 			autoplayTimeout: 1500,
 			lazyLoad: true
-		};
+    };
+    this.getCartProduct();
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
   }
+
+  getCartProduct() {
+		this.cartProducts = this.productService.getLocalCartProducts();
+	}
 
 }

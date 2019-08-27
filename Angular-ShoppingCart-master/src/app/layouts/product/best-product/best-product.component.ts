@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
+import * as myClickCounter from '../../../global';
 
 @Component({
 	selector: 'app-best-product',
@@ -59,4 +60,10 @@ export class BestProductComponent implements OnInit {
 			}
 		);
 	}
+
+	increaseCount(){
+		
+		//myClickCounter.clickCounter;
+	}
+
 }
