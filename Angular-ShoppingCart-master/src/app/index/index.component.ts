@@ -18,4 +18,9 @@ export class IndexComponent implements OnInit {
 			lazyLoad: true
 		};
   }
+
+  onClickChat(){
+    
+  }
+  
 }

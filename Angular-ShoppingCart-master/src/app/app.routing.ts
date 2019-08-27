@@ -22,6 +22,10 @@ export const AppRoutes: Routes = [
 			{
 				path: 'task-board',
 				loadChildren: './layouts/task-board/task-board.module#TaskBoardModule'
+			},
+			{
+				path: 'chatbot',
+				loadChildren: './index/chatbot#ChatBot'
 			}
 		]
 	},
