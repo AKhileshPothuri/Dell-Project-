@@ -16,9 +16,11 @@ declare var $: any;
 })
 export class NavbarComponent implements OnInit {
 
-  cartProducts: Product[];
   angularVersion = VERSION;
+  
+  cartProducts: Product[];
   options: any;
+
   modalRef: BsModalRef;
   ratio: number;
 
@@ -40,7 +42,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() { 
     this.options = {
-			
 			autoplay: true,
 			loop: true,
 			autoplayTimeout: 1500,
@@ -68,6 +69,7 @@ export class NavbarComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
+    this.cartProducts = this.productService.getLocalCartProducts();
     this.modalRef = this.modalService.show(template, this.config);
   }
 
