@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
 
 
   sendArguments(clicks, uniqueProds){
-    var client_id = `http://172.20.10.2:5000/api?arg1=${clicks}&arg2=${uniqueProds}`;
+    var client_id = `http://10.6.10.100:5000/api?arg1=${clicks}&arg2=${uniqueProds}`;
     var serverData;
     this.httpClient.get(client_id).subscribe(data => {
       serverData = data as JSON;
