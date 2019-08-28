@@ -51,7 +51,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(template: TemplateRef<any>) {
-    //this.openModal(template);
+    this.openModal(template);
     this.authService.logout();
     this.productService.emptyLocalCart();
     this.productService.emptylocalFavs();
