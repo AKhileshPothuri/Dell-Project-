@@ -49,7 +49,7 @@
     "ngx-owl-carousel": "^2.0.7",
     "ngx-pagination": "^3.2.1",
     "node": "^10.12.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^7.0.0",
     "owl.carousel": "^2.3.4",
     "primeng": "^7.0.0",
     "rxjs": "^6.5.2",
